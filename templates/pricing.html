@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing | Content Forge</title>
+    <meta name="description" content="Content pricing for B2B SaaS companies. Flexible packages to fit your needs.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg: #0f0f0f;
+            --text: #f5f5f5;
+            --accent: #e85d04;
+            --muted: #a0a0a0;
+            --card: #1a1a1a;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+        
+        header p {
+            font-size: 1.25rem;
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+        
+        .pricing-card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 1px solid #333;
+            position: relative;
+        }
+        
+        .pricing-card.featured {
+            border: 2px solid var(--accent);
+            transform: scale(1.05);
+        }
+        
+        .pricing-card .badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-card .subtitle {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .pricing-card .price {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-card .price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--muted);
+        }
+        
+        .pricing-card .description {
+            color: var(--muted);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+        
+        .pricing-card ul {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .pricing-card ul li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #222;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .pricing-card ul li::before {
+            content: "✓";
+            color: var(--accent);
+            font-weight: 700;
+        }
+        
+        .cta {
+            background: var(--accent);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: block;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        
+        .cta:hover {
+            opacity: 0.9;
+        }
+        
+        .cta-secondary {
+            background: transparent;
+            border: 2px solid var(--muted);
+            color: var(--text);
+        }
+        
+        .custom-section {
+            background: var(--card);
+            padding: 3rem;
+            border-radius: 16px;
+            text-align: center;
+        }
+        
+        .custom-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .custom-section p {
+            color: var(--muted);
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+        
+        .faq {
+            margin-top: 4rem;
+        }
+        
+        .faq h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .faq-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .faq-item {
+            background: var(--card);
+            padding: 2rem;
+            border-radius: 12px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+        }
+        
+        .faq-item p {
+            color: var(--muted);
+            line-height: 1.6;
+        }
+        
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #222;
+            color: var(--muted);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        a {
+            color: var(--accent);
+        }
+        
+        @media (max-width: 900px) {
+            .pricing-grid { grid-template-columns: 1fr; }
+            .pricing-card.featured { transform: none; }
+            header h1 { font-size: 2.25rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo"><a href="/" style="text-decoration:none;color:var(--accent);">Content Forge</a></div>
+            <h1>Pricing that fits your stage</h1>
+            <p>No long-term contracts. No hidden fees. Just great content when you need it.</p>
+        </header>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Starter</h3>
+                <p class="subtitle">For companies just getting started with content</p>
+                <div class="price">$1,500<span>/mo</span></div>
+                <p class="description">Perfect for testing the waters</p>
+                <ul>
+                    <li>4 blog posts</li>
+                    <li>2 social media posts/week</li>
+                    <li>Basic SEO optimization</li>
+                    <li>48-hour turnaround</li>
+                    <li>Email support</li>
+                </ul>
+                <a href="mailto:hello@contentforge.io?subject=Starter Package Inquiry" class="cta">Get started</a>
+            </div>
+            
+            <div class="pricing-card featured">
+                <div class="badge">Most Popular</div>
+                <h3>Growth</h3>
+                <p class="subtitle">For scaling companies who need consistent content</p>
+                <div class="price">$2,500<span>/mo</span></div>
+                <p class="description">Our most popular package</p>
+                <ul>
+                    <li>8 blog posts</li>
+                    <li>4 social posts/week</li>
+                    <li>1 case study</li>
+                    <li>Email sequence (up to 5 emails)</li>
+                    <li>Priority 24-hour turnaround</li>
+                    <li>Monthly strategy call</li>
+                </ul>
+                <a href="mailto:hello@contentforge.io?subject=Growth Package Inquiry" class="cta">Get started</a>
+            </div>
+            
+            <div class="pricing-card">
+                <h3>Scale</h3>
+                <p class="subtitle">For established companies who need full content support</p>
+                <div class="price">$4,000<span>/mo</span></div>
+                <p class="description">Everything you need to scale</p>
+                <ul>
+                    <li>12 blog posts</li>
+                    <li>Daily social posts</li>
+                    <li>2 case studies</li>
+                    <li>Full email sequences</li>
+                    <li>Landing page copy</li>
+                    <li>Priority 24-hour turnaround</li>
+                    <li>Weekly strategy calls</li>
+                    <li>Dedicated content manager</li>
+                </ul>
+                <a href="mailto:hello@contentforge.io?subject=Scale Package Inquiry" class="cta">Get started</a>
+            </div>
+        </div>
+        
+        <div class="custom-section">
+            <h2>Need something custom?</h2>
+            <p>Every company is different. If you need a tailored package — one-off projects, specific content types, or custom volumes — let's talk it out.</p>
+            <a href="mailto:hello@contentforge.io?subject=Custom Package Inquiry" class="cta cta-secondary">Build my custom package</a>
+        </div>
+        
+        <div class="faq">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>How does billing work?</h3>
+                    <p>We bill monthly, in advance. All packages are month-to-month — no long-term contracts. Pause or cancel anytime with 14 days notice.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What if I need more content?</h3>
+                    <p>No problem. We can add one-off projects at our standard per-piece rates, or upgrade your monthly package at any time.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How do revisions work?</h3>
+                    <p>Each package includes one round of revisions on all content. If you need major changes after that, we bill additional time at our standard hourly rate.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can I try before committing?</h3>
+                    <p>Absolutely. Start with a one-off project to test our work. If you love it (and we think you will), we can convert to a monthly package.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Who writes the content?</h3>
+                    <p>Our team of experienced writers with backgrounds in B2B SaaS. You'll work with a dedicated team that learns your brand voice and preferences over time.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What's included in case studies?</h3>
+                    <p>We handle everything — customer interview, story arc, writing, and final draft. We only need access to your customer for a 30-minute call.</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2026 Content Forge. <a href="/">Back to home</a></p>
+        </footer>
+    </div>
+</body>
+</html>
