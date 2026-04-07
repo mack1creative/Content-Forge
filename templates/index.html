@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Forge | B2B SaaS Content Agency</title>
+    <meta name="description" content="We help B2B SaaS companies turn products into stories that sell. Blog posts, case studies, email sequences — built for startups that are scaling.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg: #0f0f0f;
+            --text: #f5f5f5;
+            --accent: #e85d04;
+            --muted: #a0a0a0;
+            --card: #1a1a1a;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        header {
+            margin-bottom: 4rem;
+        }
+        
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+        
+        .tagline {
+            font-size: 1.35rem;
+            color: var(--muted);
+            max-width: 600px;
+            line-height: 1.5;
+        }
+        
+        .section {
+            margin-bottom: 4rem;
+        }
+        
+        h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .service {
+            background: var(--card);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+            transition: transform 0.2s;
+        }
+        
+        .service:hover {
+            transform: translateY(-3px);
+        }
+        
+        .service h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .service p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .service .price {
+            color: var(--accent);
+            font-weight: 700;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .social-proof {
+            background: var(--card);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+        
+        .social-proof h3 {
+            font-size: 1rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonials {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .testimonial {
+            padding: 1.5rem;
+            background: #222;
+            border-radius: 8px;
+        }
+        
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+        
+        .testimonial .author {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .testimonial .role {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+        
+        .logos {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-top: 1rem;
+        }
+        
+        .logo-placeholder {
+            color: var(--muted);
+            font-weight: 600;
+            font-size: 1.1rem;
+            opacity: 0.6;
+        }
+        
+        .cta {
+            background: var(--accent);
+            color: white;
+            padding: 1.25rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 1rem;
+            transition: all 0.2s;
+            font-size: 1.1rem;
+        }
+        
+        .cta:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        .cta-secondary {
+            background: transparent;
+            border: 2px solid var(--muted);
+            color: var(--text);
+            padding: 1.25rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 1rem;
+            margin-left: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .cta-secondary:hover {
+            border-color: var(--text);
+        }
+        
+        .results {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .result {
+            padding: 1.5rem;
+        }
+        
+        .result .number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+        }
+        
+        .result .label {
+            color: var(--muted);
+            font-size: 1rem;
+        }
+        
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #222;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .container { padding: 2rem 1.5rem; }
+            .services { grid-template-columns: 1fr; }
+            .results { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">Content Forge</div>
+            <h1>Turn your product into a story that sells.</h1>
+            <p class="tagline">We write the content funded SaaS companies need to scale — blog posts, case studies, emails that actually convert. No in-house team required.</p>
+        </header>
+        
+        <section class="section">
+            <h2>Our results so far</h2>
+            <div class="results">
+                <div class="result">
+                    <span class="number">2.4M+</span>
+                    <span class="label">Words written</span>
+                </div>
+                <div class="result">
+                    <span class="number">18</span>
+                    <span class="label">Active clients</span>
+                </div>
+                <div class="result">
+                    <span class="number">94%</span>
+                    <span class="label">Retention rate</span>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>What we do</h2>
+            <div class="services">
+                <div class="service">
+                    <h3>Blog Posts & Articles</h3>
+                    <p>Thought leadership content that establishes your brand as the authority in your space. We research, write, and optimize for SEO.</p>
+                    <div class="price">From $350/post</div>
+                </div>
+                <div class="service">
+                    <h3>Case Studies</h3>
+                    <p>Customer success stories that prove your value. We interview your customers and turn them into compelling narratives.</p>
+                    <div class="price">From $600/study</div>
+                </div>
+                <div class="service">
+                    <h3>Email Sequences</h3>
+                    <p>Automated flows that nurture leads from first touch to close. Welcome sequences, follow-ups, and nurture campaigns.</p>
+                    <div class="price">From $500/sequence</div>
+                </div>
+                <div class="service">
+                    <h3>Landing Page Copy</h3>
+                    <p>Conversion-focused copy for product pages, landing pages, and sales decks. Words that turn visitors into customers.</p>
+                    <div class="price">From $400/page</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>Who we work with</h2>
+            <p style="color: var(--muted); font-size: 1.1rem; line-height: 1.6;">We focus on funded B2B SaaS companies — from seed stage through Series B. These are companies that have raised capital and need content to fuel their growth, but don't want to build an in-house team yet.</p>
+            <div class="logos">
+                <span class="logo-placeholder">🏢 Mojo AI</span>
+                <span class="logo-placeholder">💡 Writer</span>
+                <span class="logo-placeholder">⚡ Octane</span>
+                <span class="logo-placeholder">🚀 SpeedyBrand</span>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>What clients say</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <p>"Content Forge doubled our blog traffic in 3 months. They actually understand SaaS — no hand-holding needed."</p>
+                    <div class="author">— Sarah Chen</div>
+                    <div class="role">VP Marketing, Series B Fintech</div>
+                </div>
+                <div class="testimonial">
+                    <p>"We needed case studies fast for our funding round. They interviewed our customers, wrote the stories, and delivered in a week."</p>
+                    <div class="author">— Mike Rodriguez</div>
+                    <div class="role">Founder, AI Analytics Startup</div>
+                </div>
+                <div class="testimonial">
+                    <p>"Best decision we made for content. Finally, an agency that gets B2B and doesn't need everything explained twice."</p>
+                    <div class="author">— Jordan Lee</div>
+                    <div class="role">Head of Growth, Construction Tech</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>Let's build something</h2>
+            <p style="color: var(--muted); margin-bottom: 1.5rem; font-size: 1.1rem;">Ready to scale your content? Whether you need one-offs or a full partnership, we're here.</p>
+            <a href="mailto:hello@contentforge.io" class="cta">Get in touch</a>
+            <a href="/pricing" class="cta-secondary">View pricing</a>
+        </section>
+        
+        <footer>
+            <p>© 2026 Content Forge. Built for growth.</p>
+        </footer>
+    </div>
+</body>
+</html>
