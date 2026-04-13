@@ -68,6 +68,44 @@ class LeadResponse(BaseModel):
 
 # ==================== HELPER FUNCTIONS ====================
 
+def parse_message_for_qualification(message: str) -> dict:
+    """Parse lead message to extract qualification data"""
+    if not message:
+        return {}
+    
+    msg = message.lower()
+    result = {}
+    
+    # Extract budget
+    import re
+    budget_match = re.search(r'\$?(\d{2,3})k', msg) or re.search(r'(\d{2,3}),?\d{3}', msg)
+    if budget_match:
+        result['budget'] = f"${budget_match.group(1)}k"
+    
+    # Extract beds
+    beds_match = re.search(r'(\d+)\s*(bed|br|bedroom)', msg)
+    if beds_match:
+        result['beds_required'] = int(beds_match.group(1))
+    
+    # Extract timeline
+    if 'immediate' in msg or 'asap' in msg or 'now' in msg:
+        result['timeline'] = 'immediate'
+    elif '1-3' in msg or 'two months' in msg or 'next 2' in msg:
+        result['timeline'] = '1-3 months'
+    elif '3-6' in msg or 'months' in msg:
+        result['timeline'] = '3-6 months'
+    elif '6+' in msg or 'year' in msg:
+        result['timeline'] = '6+ months'
+    
+    # Extract pre-approval
+    if 'pre-approval' in msg or 'preapproval' in msg or 'pre approved' in msg:
+        if 'have' in msg or 'got' in msg or 'already' in msg:
+            result['preapproval_status'] = 'yes'
+        elif 'working' in msg or 'process' in msg:
+            result['preapproval_status'] = 'in process'
+    
+    return result
+
 def calculate_lead_score(lead_data: dict) -> int:
     """Calculate lead score based on qualification factors"""
     score = 0
@@ -198,6 +236,12 @@ async def process_lead_outreach(lead_id: str):
     lead = leads_db.get(lead_id)
     if not lead:
         return
+    
+    # Parse message for qualification data
+    parsed = parse_message_for_qualification(lead.get("message", ""))
+    for key, value in parsed.items():
+        if not lead.get(key):
+            lead[key] = value
     
     # Update status
     lead["status"] = LeadStatus.CONTACTED.value
